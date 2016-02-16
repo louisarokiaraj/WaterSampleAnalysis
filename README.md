@@ -3,8 +3,7 @@
 LOS ANGELES DRINKING WATER SAMPLING
 -----------------------------------------------------------------------------------------------------------------------------------------										
 Objective:
-	-> To analyze the various water samples given to us by the Los Angeles Water Department into factors of danger level
-	   depending on its content of Trihalomethanes.
+	-> To analyze the various water samples given to us by the Los Angeles Water Department into factors of danger level depending on its content of Trihalomethanes.
 -----------------------------------------------------------------------------------------------------------------------------------------	   
 Environment Setup:
 
