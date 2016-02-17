@@ -36,7 +36,7 @@ public class FactorWeights {
 	 * Function to fetch the values from Factor Weights Tables w.r.t given ID
 	 */
 
-	public void factorFind(int factorWeightID) throws Exception{
+	public void factorFind(int factorWeightID,boolean excpFlag) throws Exception{
 		try{
 			stmt = connObj.getConnection();
 			String sql;
@@ -49,8 +49,11 @@ public class FactorWeights {
 				this.bromodichloromethane_weight = rs.getDouble(Constants.BROMODICHLOROMETHANE_WEIGHT);
 				this.dibromichloromethane_weight = rs.getDouble(Constants.DIBROMICHLOROMETHANE_WEIGHT);
 			}
-			if(this.chloroform_weight < 0 || this.bromoform_weight < 0 || this.bromodichloromethane_weight < 0 || this.dibromichloromethane_weight < 0){
-				throw new Exception("Individual factor_weight values cannot be negative NOT VALID !! ");
+			if((this.chloroform_weight < 0 || this.bromoform_weight < 0 || this.bromodichloromethane_weight < 0 || this.dibromichloromethane_weight < 0) && excpFlag == false){
+				throw new Exception("Individual factor_weight values cannot be negative NOT VALID !!");
+			}
+			if(this.id ==0 && this.chloroform_weight == 0 && this.bromoform_weight == 0 && this.bromodichloromethane_weight == 0 && this.dibromichloromethane_weight ==0){
+				throw new Exception("No Valid Record Found in Factor Weights Table !!");
 			}
 			rs.close();
 			connObj.closeConnection();

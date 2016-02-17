@@ -56,6 +56,9 @@ public class WaterSample {
 			if(this.chloroform+this.bromoform+this.bromodichloromethane+this.dibromichloromethane > 0.080){
 				throw new Exception("their collective concentration exceeds .080 mg/L,record DELETED from table !! BAD WATER SAMPLE");
 			}
+			if(this.site == null && this.chloroform == 0 && this.bromoform == 0 && this.bromodichloromethane == 0 && this.dibromichloromethane ==0 && this.id ==0){
+				throw new Exception("No Valid Record Found in WaterSample Table!!");
+			}
 			rs.close();
 			connObj.closeConnection();
 		}catch(SQLException e){

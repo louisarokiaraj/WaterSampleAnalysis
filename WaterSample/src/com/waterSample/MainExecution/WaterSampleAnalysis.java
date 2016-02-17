@@ -58,8 +58,11 @@ public class WaterSampleAnalysis {
 				ResultSet rs = stmt.executeQuery(sql);
 				while(rs.next()){
 					FactorWeights factorObj = new FactorWeights();
-					factorObj.factorFind(rs.getInt(Constants.ID));
-					myMap.put(("Factor_"+(factorObj.id)), this.calculateFactor(water_obj, factorObj));
+					factorObj.factorFind(rs.getInt(Constants.ID),true);
+					if(factorObj.chloroform_weight < 0 || factorObj.bromoform_weight < 0 || factorObj.bromodichloromethane_weight <0 || factorObj.dibromichloromethane_weight < 0 ){
+						myMap.put(("Factor_"+(factorObj.id)), "Factor Weights Negative. !Invalid");
+					}else
+						myMap.put(("Factor_"+(factorObj.id)), this.calculateFactor(water_obj, factorObj));
 				}
 			}catch(Exception e){
 				e.printStackTrace();
@@ -100,7 +103,7 @@ public class WaterSampleAnalysis {
 			System.exit(0);
 		}
 		try {
-			factorObj.factorFind(factor_weight_id);
+			factorObj.factorFind(factor_weight_id,false);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.exit(0);

@@ -34,7 +34,7 @@ public class WaterSampleAnalysisTest {
 			System.exit(0);
 		}
 		try {
-			factor_obj.factorFind(1);
+			factor_obj.factorFind(1,false);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.exit(0);
